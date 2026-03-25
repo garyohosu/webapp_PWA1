@@ -43,8 +43,14 @@ class App {
           reg.addEventListener('updatefound', () => {
             const nw = reg.installing; if (!nw) return;
             nw.addEventListener('statechange', () => {
-              if (nw.state === 'installed' && navigator.serviceWorker.controller) {
-                this.showUpdateToast(nw);
+              if (nw.state === 'installed') {
+                if (navigator.serviceWorker.controller) {
+                  // 既存 SW あり → 更新トーストを表示
+                  this.showUpdateToast(nw);
+                } else {
+                  // 初回インストール → 自動で有効化
+                  nw.postMessage('SKIP_WAITING');
+                }
               }
             });
           });

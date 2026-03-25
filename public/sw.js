@@ -1,6 +1,6 @@
 // Service Worker - App Shellキャッシュ戦略
-const VERSION = 'v1.0.4';
-const CACHE_NAME = 'pwa-cache-v4';
+const VERSION = 'v1.0.5';
+const CACHE_NAME = 'pwa-cache-v5';
 
 // インストール時：App Shellをキャッシュ
 self.addEventListener('install', (event) => {
